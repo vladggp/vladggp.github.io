@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="Stan">
+<p>Baobab nation</p>
+    {{ counter }}
+    <button v-on:click="increase(713)">Bunga-Bunga</button>
+    <button v-on:click="ghita">haterii</button>
+    <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
+
+    <input type="text" v-on:keyup.space="alertMe">
+
+<p>{{name}}</p>
+    <input type="text" v-model="name">
+
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter++">Increase 2</button>
+    <p>Counter : {{ counter }}</p>
+    <p>Result: {{output}}</p>
+
+
+</div>
+<script>
+new Vue({
+    el:"#Stan",
+    data:function() {
+        return {
+        title:"Taca-Paca",
+        counter:0,
+            x: 0,
+            y: 0,
+            name: 'Max',
+        };
+
+    },
+    computed: {
+        output: function() {
+            console.log('computed');
+            return this.counter > 5 ? 'Greater 5' : 'Smaller 5'
+        }
+    },
+
+    methods: {
+        increase: function(step){
+         this.counter += step
+        },
+        ghita: function(step){
+            this.counter --
+        },
+        updateCoordinates: function(event) {
+            this.x = event.clientX;
+            this.y = event.clientY;
+        },
+        dummy: function(event) {
+            event.stopPropagation();
+        },
+        alertMe: function() {
+            alert('Stan si-a pierdut coaiele')
+        }
+
+    }
+
+})
+</script>
+</body>
+</html>
