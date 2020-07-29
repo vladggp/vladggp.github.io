@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js">
+    </script>
+    <style>
+        #ew {
+            text-allign:center;
+            position:fixed;
+            margin:100px;
+            overflow:auto;
+            border:double red 10px
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div id="coa">
+    <p>{{ title }}</p>
+    <p>Mariuca love {{ sayHello() }}
+
+        <input type="text" v-on:input="changeTitle"/>
+        <p>
+    <a v-bind:href="link">ccc cc</a>
+</p>
+<h1 v-once>  {{ title }}</h1>
+    <hr>
+    <p v-html="finishedcoaie"></p>
+    {{ counter }}
+    <button v-on:click="Mariucacc">  loveste-ne </button>
+
+</div>
+
+<p id="ew">Bogdan ia fetele cand sunt mici ca sa le creasca in duba</p>
+
+
+<script type="text/javascript">
+
+console.log("hello");
+new Vue({
+    el: '#coa',
+    data: {
+        title:'Hello Coaie!',
+        iubi: 'coaiele lui Stan',
+        link: 'http://youtube.com',
+        finishedcoaie: '<a href="https://ziare.com/">ziare lumeeee</a>',
+        counter: 8,
+
+    },
+    methods: {
+        sayHello: function() {
+            return this.title + new Date()
+        },
+        changeTitle: function(event) {
+            this.title = event.target.value;
+        },
+        Mariucacc: function() {
+            this.counter++
+        }
+    }
+});
+
+</script>
+</body>
+</html>
