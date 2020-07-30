@@ -10,7 +10,7 @@
 <p>Baobab nation</p>
     {{ counter }}
     <button v-on:click="increase(713)">Bunga-Bunga</button>
-    <button v-on:click="ghita">haterii</button>
+    <button v-on:click="ghita(713)">haterii</button>
     <p v-on:mousemove="updateCoordinates">Coordinates: {{ x }} / {{ y }}</p>
 
     <input type="text" v-on:keyup.space="alertMe">
@@ -23,9 +23,12 @@
     <button v-on:click="counter++">Increase 2</button>
     <p>Counter : {{ counter }}</p>
     <p>Result: {{output}}</p>
-
+    <p>Mi-ai dat la coaie {{coaie}}</p>
 
 </div>
+
+
+</body>
 <script>
 new Vue({
     el:"#Stan",
@@ -43,7 +46,12 @@ new Vue({
         output: function() {
             console.log('computed');
             return this.counter > 5 ? 'Greater 5' : 'Smaller 5'
+        },
+        output: function() {
+            console.log('computed');
+            return this.counter > 5 ? 'Mariuca coaie' : 'Babagico Alinoiu'
         }
+
     },
 
     methods: {
@@ -51,7 +59,7 @@ new Vue({
          this.counter += step
         },
         ghita: function(step){
-            this.counter --
+            this.counter -= step
         },
         updateCoordinates: function(event) {
             this.x = event.clientX;
@@ -62,7 +70,7 @@ new Vue({
         },
         alertMe: function() {
             alert('Stan si-a pierdut coaiele')
-        }
+        },
 
     }
 
