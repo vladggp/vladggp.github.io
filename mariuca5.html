@@ -50,10 +50,14 @@
                 <v-btn v-on:click="attack">
                     Attack
                 </v-btn>
+                <v-btn v-on:click="uu">
+                    Heal
+                </v-btn>
                 <v-btn v-on:click="coaieie">
                     Restart
                 </v-btn>
             </v-row>
+
 
         </v-container>
     </v-main>
@@ -104,6 +108,16 @@
                 this.hp_monster = 100
 
             },
+            heal: function() {
+                let jaj = this.getRandomInt(40)
+                this.hp_me= this.hp_me + jaj
+            },
+
+            uu: function() {
+                this.heal()
+                this.lovescEl()
+            }
+
         }
 
     })
