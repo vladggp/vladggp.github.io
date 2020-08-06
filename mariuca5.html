@@ -53,6 +53,9 @@
                 <v-btn v-on:click="uu">
                     Heal
                 </v-btn>
+                <v-btn v-on:click="uiu">
+                    Special Attack
+                </v-btn>
                 <v-btn v-on:click="coaieie">
                     Restart
                 </v-btn>
@@ -115,6 +118,15 @@
 
             uu: function() {
                 this.heal()
+                this.lovescEl()
+            },
+            kty: function() {
+                let hp =this.getRandomInt(70)
+                this.hp_monster= this.hp_monster - hp
+            },
+            uiu: function() {
+                this.kty()
+                this.lovescEl()
                 this.lovescEl()
             }
 
