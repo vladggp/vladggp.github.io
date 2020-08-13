@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Monster Game</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+</head>
+<body>
+<div id="app">
+    <v-app>
+
+    <v-main>
+        <v-container>
+            <v-row
+                    align="center"
+                    justify="center"
+            >
+                <v-col>
+                    eu
+                    <v-progress-circular
+                            :rotate="-90"
+                            :size="100"
+                            :width="15"
+                            :value="hp_me"
+                            color="primary"
+                    >
+                        {{ hp_me }}
+                    </v-progress-circular>
+                </v-col>
+                <v-col>
+                    monster
+                    <v-progress-circular
+                            :rotate="-90"
+                            :size="100"
+                            :width="15"
+                            :value="hp_monster"
+                            color="secondary"
+                    >
+                        {{ hp_monster }}
+                    </v-progress-circular>
+                </v-col>
+            </v-row>
+            <v-row>
+                <v-btn v-on:click="attack">
+                    Attack
+                </v-btn>
+                <v-btn v-on:click="uu">
+                    Heal
+                </v-btn>
+                <v-btn v-on:click="uiu">
+                    Special Attack
+                </v-btn>
+                <v-btn v-on:click="coaieie">
+                    Restart
+                </v-btn>
+            </v-row>
+            <ul>
+                <li v-for="item in log">{{ item }}</li>
+            </ul>
+
+
+        </v-container>
+    </v-main>
+
+    </v-app>
+
+
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<script>
+
+
+    new Vue ({
+        el:'#app',
+        vuetify: new Vuetify(),
+        data: function() {
+            return {
+                hp_me: 100,
+                hp_monster:100,
+                gameIsRunning: false,
+                log: [],
+                coaie: [
+                    {babagico:'coaie-coaie'}
+                ],
+                pac: 100
+            }
+        },
+        watch: {
+            hp_me: function () {
+                if ( this.hp_me < 0 ) {
+                    alert('ai pierdut fraiere !')
+                    this.coaieie()
+                }
+            },
+            hp_monster: function () {
+                if (this.hp_monster < 0) {
+                    alert('ai invins coaie !')
+                    this.coaieie()
+                }
+            }
+        },
+        methods: {
+            getRandomInt: function(max) {
+              return Math.floor( Math.random() * max )
+            },
+            lovescEu: function() {
+                let hp = this.getRandomInt( 35 )
+                this.hp_monster = this.hp_monster - hp
+                this.log.push('am dat cu ' + hp)
+            },
+            lovescEl: function() {
+                let hp = this.getRandomInt( 32 )
+                this.hp_me = this.hp_me - hp
+                this.log.push('m-a lovit cu ' + hp)
+            },
+            attack: function () {
+                this.lovescEu()
+                this.lovescEl()
+            },
+            coaieie: function() {
+                this.hp_me = 100
+                this.hp_monster = 100
+                this.log.splice(0,this.log.length)
+
+            },
+            heal: function() {
+                let jaj = this.getRandomInt(40)
+                this.hp_me= this.hp_me + jaj
+            },
+
+            uu: function() {
+                this.heal()
+                this.lovescEl()
+            },
+            kty: function() {
+                let hp =this.getRandomInt(70)
+                this.hp_monster= this.hp_monster - hp
+            },
+            uiu: function() {
+                this.kty()
+                this.lovescEl()
+                this.lovescEl()
+            }
+
+        }
+
+    })
+
+
+
+
+
+</script>
+
+</body>
+</html>
